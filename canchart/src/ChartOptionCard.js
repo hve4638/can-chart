@@ -35,9 +35,9 @@ export function ChartOptionCard(props) {
             onChange={(value)=>onChange('logscale', value)}
           >Log Scale</Check>
           <Check 
-            checked={option.chart.advanced}
-            onChange={(value)=>onChange('advanced', value)}
-          >Advanced</Check>
+            checked={option.chart.virtualid}
+            onChange={(value)=>onChange('virtualid', value)}
+          >Virtual ID</Check>
           <div className='flex'></div>
           <Pad5></Pad5>
           <button

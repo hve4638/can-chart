@@ -23,13 +23,13 @@ class QueryBuilder(DBBuilder):
 
     def limit(self, limit):
         if self.__limit:
-            raise Exception("only one where allowed")
+            raise Exception("only one limit allowed")
         self.__limit = limit
         return self
     
     def offset(self, offset):
         if self.onoffset:
-            raise Exception("only one where allowed")
+            raise Exception("only one offset allowed")
         self.onoffset = True
         self.query += f" OFFSET {offset}"
         return self

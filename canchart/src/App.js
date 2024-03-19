@@ -32,17 +32,14 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const Pad5 = () => (<div style={{height:'5px'}}></div>)
 
 function App() {
-  const [charttype, setCharttype] = useState('timesequence');
-  const [limit, setLimit] = useState('1000');
-  const [logScale, setLogScale] = useState(true);
   const [chartSignal, setChartSignal] = useState(0);
   const refreshChart = () => setChartSignal(chartSignal+1)
 
   const [option, setOption] = useState({
     'canid' : [
+      
     ],
     'chart' : {
       'type' : 'timesequence',
@@ -50,7 +47,7 @@ function App() {
       'begin' : 0,
       'end' : 0,
       'logscale' : true,
-      'advanced' : false
+      'virtualid' : false
     }
   });
 
@@ -62,9 +59,6 @@ function App() {
       <div className='contents' style={{padding:"8px"}}>
         <div className='column flex'>
           <CanChart
-            type={charttype}
-            limit={limit}
-            logScale={logScale}
             option={option}
             setOption={setOption}
             chartSignal={chartSignal}

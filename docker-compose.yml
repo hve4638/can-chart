@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  canchart:
+    image: node:21-alpine3.18
+    container_name: canchart
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    network_mode: host
+    expose:
+      - 3000
+    volumes:
+      - ./canchart:/canchart
+    user: "1000"
+    working_dir: /canchart
+    command: sh -c "
+                npm i &
+                npm start"
+
+  canchart-api:
+    image: python:alpine3.19
+    container_name: canchart-api
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    network_mode: host
+    expose:
+      - 4000
+    volumes:
+      - ./canchartapi:/canchartapi
+    working_dir: /canchartapi
+    command: sh -c "pip install -r requirement.txt &&
+                python app.py"

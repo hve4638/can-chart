@@ -126,7 +126,7 @@ def request_upload():
         isupload = True
         filepath = f'{upload_dir}/{filehash}.csv'
         file.save(filepath)
-        chart.canparse(filename=filepath, filehash=filehash, db=db)
+        chart.parse(filename=filepath, filehash=filehash, db=db)
 
         db.insert('meta', {
             'name' : filename,
@@ -143,4 +143,4 @@ def request_upload():
 if __name__ == '__main__':
     dbinit()
 
-    app.run(debug=True, host="0.0.0.0", port=4080)
+    app.run(debug=True, host="0.0.0.0", port=4000)

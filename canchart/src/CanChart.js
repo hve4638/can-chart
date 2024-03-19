@@ -10,7 +10,7 @@ const colorcandidates = [
 ];
 
 export function CanChart(props) {
-    const { limit, option, setOption, chartSignal, refreshChart } = props;
+    const { option, setOption, chartSignal, refreshChart } = props;
     const [ chartdata, setChartdata ] = useState({})
     const chartoptions = {
       plugins: {
@@ -96,47 +96,6 @@ export function CanChart(props) {
         }
         setTokens(newtokens)
         refreshChart()
-        return;
-        
-        if (option.chart.type == 'timesequence') {
-            console.log(
-                'request timesequence\n'
-                + 'tokens: ' + tokens + '\n'
-                + 'limit : ' + limit
-            );
-            const chartdata = await reqTimeSequnce(newtokens, limit-0)
-            const datasets = []
-            console.log(chartdata)
-            for (let i = 0; i < chartdata.datasets.length; i++) {
-                const data = chartdata.datasets[i];
-                
-                datasets.push({
-                    label : data.label,
-                    data : data.data,
-                    borderColor: 'rgba(255, 99, 132, 0)',
-                    backgroundColor: colorcandidates[i],
-                    tension: 0,
-                });
-            }
-            const newoption = { ...option }
-            const ids = chartdata.additions.ids
-            const newcanid = []
-            for (const id in ids) {
-                newcanid.push({
-                    'id' : id,
-                    'enabled' : true,
-                    'count' : ids[id],
-                });
-            }
-            newoption.canid = newcanid
-            setOption(newoption)
-            setChartdata({
-                labels : chartdata.labels,
-                datasets : datasets
-            });
-            setStyle({ margin : "8px", flex: "1" })
-            setDone(true);
-        }
         return;
     }
     

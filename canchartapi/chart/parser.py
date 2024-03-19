@@ -1,6 +1,6 @@
 import csv
 
-def canparse(filename:str, filehash:str, db):
+def parse(filename:str, filehash:str, db):
     with open(filename, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
 
